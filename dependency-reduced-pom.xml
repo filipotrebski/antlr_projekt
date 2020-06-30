@@ -23,7 +23,7 @@
           </execution>
         </executions>
         <configuration>
-          <grammars>project/J2p.g4</grammars>
+          <grammars>projekt/J2p.g4</grammars>
           <visitor>false</visitor>
           <listener>true</listener>
         </configuration>
@@ -50,8 +50,8 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>${target.jvm}</source>
-          <target>${target.jvm}</target>
+          <source>8</source>
+          <target>8</target>
         </configuration>
       </plugin>
     </plugins>

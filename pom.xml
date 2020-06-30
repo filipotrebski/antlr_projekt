@@ -41,7 +41,7 @@
                 <artifactId>antlr4-maven-plugin</artifactId>
                 <version>${antlr.version}</version>
                 <configuration>
-                    <grammars>J2p.g4</grammars>
+                    <grammars>projekt/J2p.g4</grammars>
                     <visitor>false</visitor>
                     <listener>true</listener>
                 </configuration>

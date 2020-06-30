@@ -9,17 +9,27 @@ EOF;
 pkg: 'package' qualifiedName ';' ;
 imports: 'import' qualifiedName ';';
 
-class_def: modificator? 'class' Identifier block;
+class_def: modificator? 'class' Identifier classBody;
 
 method: modificator? staticType? returnType methodName '(' (argumentsDefList) ')' block;
-variableDef: modificator? staticType? qualifiedName NAME '=' VALUE ';';
+
+fieldDef: modificator? staticType? qualifiedName variable '=' literal ';' ;
+
+variableDef: qualifiedName variable '=' literal ';';
+variable: Identifier ;
+
+classBody: '{' classMember* '}';
+classMember: statement
+       | fieldDef
+       ;
 
 block:  '{' blockStatement '}';
 
-blockStatement
-    :   statement*
-    ;
-//Variables
+blockStatement: blockElement* ;
+
+blockElement: statement
+   | variableDef
+   ;
 
 statement: method
 | methodCall;
@@ -31,14 +41,14 @@ argumentsDefList: argumentDef? (',' argumentDef)* ;
 argumentDef: qualifiedName'[]'? Identifier;
 
 argumentsList: argument? (',' argument)* ;
-argument: literal;
+argument: literal
+| variable;
 
 literal: StringLiteral ;
 
 StringLiteral:	'"' ~["\\]* '"';
 
 
-//variable: Identifier ;
 
 
 modificator
@@ -55,8 +65,8 @@ qualifiedName
     ;
 methodName: Identifier;
 Identifier: [a-zA-Z] [a-zA-Z0-9]*;
-VALUE: ["a-zA-Z0-9];
-NAME: [a-zA-Z0-9];
+//VALUE: ["a-zA-Z0-9];
+//NAME: [a-zA-Z0-9];
 //PACKAGE : [a-zA-Z0-9];
 //FULL_CLASS: [a-zA-Z0-9];
 

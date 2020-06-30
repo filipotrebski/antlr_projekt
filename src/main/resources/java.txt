@@ -1,0 +1,19 @@
+package a;
+import b;
+public class MyClass {
+
+ String msg = "this is field" ;
+
+ public static void main ( String[] args ) {
+   System.out.println("hello world");
+   System.out.println(msg);
+   String someVariable = "this is variable";
+   System.out.println(someVariable);
+   someMethod();
+ }
+
+ public static void someMethod ( ) {
+   System.out.println("Some method");
+ }
+
+}
